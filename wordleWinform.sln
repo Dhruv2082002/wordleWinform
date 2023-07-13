@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wordleWinform", "wordleWinform\wordleWinform.csproj", "{6D2C5D6E-7E08-4D52-97ED-7C00C2246A39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D2C5D6E-7E08-4D52-97ED-7C00C2246A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2C5D6E-7E08-4D52-97ED-7C00C2246A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2C5D6E-7E08-4D52-97ED-7C00C2246A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2C5D6E-7E08-4D52-97ED-7C00C2246A39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {423584B8-B946-47E2-B7CE-61975D7C4C46}
+	EndGlobalSection
+EndGlobal
