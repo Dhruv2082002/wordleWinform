@@ -2,28 +2,34 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace wordleWinform
 {
     public partial class Form1 : Form
     {
-        List<string> fiveLetterWords = new List<string>
-         {
-    "apple", "brave", "cloud", "dough", "early", "flame", "grape", "happy", "igloo", "jelly",
-    "karma", "lemon", "mango", "nerve", "olive", "pizza", "queen", "raise", "sweep", "table",
-    "unzip", "vital", "worry", "xerox", "youth", "zebra", "abuse", "baker", "cabin", "daisy",
-    "eager", "fairy", "globe", "habit", "icing", "jumbo", "kayak", "leash", "magic", "noble",
-    "ocean", "panda", "quilt", "radio", "silly", "tiger", "uncle", "vivid", "waltz", "xenon",
-    "yacht", "zealous","after", "black", "charm", "dance", "evoke", "fable", "glass", "haste",
-    "ideal", "jolly", "knots", "lunar", "march", "nymph", "oasis", "prize", "quest", "rider",
-    "sauce", "tango", "under", "viper", "wheat", "xenon", "youth", "zebra", "adapt", "blaze",
-    "chaos", "drown", "eagle", "flair", "grace", "heart", "image", "joker", "kings", "lucky",
-    "merry", "noble", "opera", "proud", "queen", "risky", "swift", "trick", "unity", "value",
-    "witty", "xerox", "yummy", "zebra", "angry", "basic", "crazy", "dream", "early", "fancy",
-    "great", "happy", "ideal", "jolly", "known", "loved", "major", "noble", "opera", "proud",
-    "quiet", "ready", "sunny", "truly", "upset", "vivid", "witty", "xenon", "youth", "zebra"
-        };
+
+
+        public class Word
+        {
+            public string word { get; set; }
+        }
+
+        public string GetRandomFiveLetterWord()
+        {
+            string url = "https://api.datamuse.com/words?sp=?????";
+            HttpClient client = new HttpClient();
+            string response = client.GetStringAsync(url).Result;
+            JArray jsonArray = JArray.Parse(response);
+            string randomWord = jsonArray[new Random().Next(0, jsonArray.Count)]["word"].ToString().ToLower();
+            return randomWord;
+        }
+
 
         int attemptIndex = 0;
         bool allowSubmit = false;
@@ -61,9 +67,9 @@ namespace wordleWinform
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Random random = new Random();
-            int randomIndex = random.Next(0, fiveLetterWords.Count());
-            answer = fiveLetterWords[randomIndex];
+            
+            answer = GetRandomFiveLetterWord();
+            //MessageBox.Show(answer);
         }
 
         private void button1_Click(object sender, EventArgs e)
